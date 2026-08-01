@@ -1,15 +1,22 @@
 package com.workbuddy.app;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Build;
 import android.util.Log;
 import android.view.WindowManager;
+import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -25,17 +32,32 @@ public class MainActivity extends AppCompatActivity {
     private WebView webView;
     private SwipeRefreshLayout swipeRefresh;
 
+    private ValueCallback<Uri[]> filePathCallback;
+    private WebChromeClient.FileChooserParams fileChooserParams;
+
+    private final ActivityResultLauncher<Intent> filePickerLauncher = registerForActivityResult(
+        new ActivityResultContracts.StartActivityForResult(),
+        result -> {
+            if (filePathCallback == null || fileChooserParams == null) return;
+            Uri[] results = fileChooserParams.parseResult(result.getResultCode(), result.getData());
+            filePathCallback.onReceiveValue(results);
+            filePathCallback = null;
+            fileChooserParams = null;
+        }
+    );
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // 全面屏 / 刘海适配：状态栏与导航栏透明，内容可延伸到切口区域；
-        // 实际留白由网页 CSS 的 env(safe-area-inset-*) 处理，避免内容钻到刘海底下
+        // 全面屏 / 刘海适配：状态栏与导航栏改为深色半透明，内容可延伸到切口区域；
+        // 实际留白由网页 CSS 的 env(safe-area-inset-*) 处理，避免内容钻到刘海底下。
+        // 深色状态栏背景 + 浅色系统图标，解决浅色页面下状态栏看不清的问题。
         WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().setStatusBarColor(0x00000000);
-            getWindow().setNavigationBarColor(0x00000000);
+            getWindow().setStatusBarColor(0xB3000000);
+            getWindow().setNavigationBarColor(0xB3000000);
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             WindowManager.LayoutParams lp = getWindow().getAttributes();
@@ -43,6 +65,11 @@ public class MainActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
             getWindow().setAttributes(lp);
         }
+
+        WindowInsetsControllerCompat insetsController =
+            new WindowInsetsControllerCompat(getWindow(), getWindow().getDecorView());
+        insetsController.setAppearanceLightStatusBars(false);
+        insetsController.setAppearanceLightNavigationBars(false);
 
         webView = findViewById(R.id.webview);
         swipeRefresh = findViewById(R.id.swiperefresh);
@@ -60,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
         settings.setDisplayZoomControls(false);
 
         settings.setUserAgentString(
-            settings.getUserAgentString() + " WorkBuddyApp/1.2.0"
+            settings.getUserAgentString() + " WorkBuddyApp/1.3.0"
         );
 
         // 注入 viewport meta + 移动端适配 CSS
@@ -72,7 +99,29 @@ public class MainActivity extends AppCompatActivity {
                 injectMobileFix(view, mobileCss);
             }
         });
-        webView.setWebChromeClient(new WebChromeClient());
+        webView.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public boolean onShowFileChooser(WebView view,
+                                             ValueCallback<Uri[]> callback,
+                                             WebChromeClient.FileChooserParams params) {
+                if (filePathCallback != null) {
+                    filePathCallback.onReceiveValue(null);
+                }
+                filePathCallback = callback;
+                fileChooserParams = params;
+                try {
+                    Intent intent = params.createIntent();
+                    filePickerLauncher.launch(intent);
+                    return true;
+                } catch (Exception e) {
+                    Log.e(TAG, "Cannot open file chooser", e);
+                    filePathCallback.onReceiveValue(null);
+                    filePathCallback = null;
+                    fileChooserParams = null;
+                    return false;
+                }
+            }
+        });
 
         if (savedInstanceState == null) {
             webView.loadUrl("https://www.workbuddy.cn/app");

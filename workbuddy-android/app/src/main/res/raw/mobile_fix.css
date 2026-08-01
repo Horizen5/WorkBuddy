@@ -7,11 +7,24 @@ html, body {
   width: 100% !important;
   margin: 0 !important;
   padding: 0 !important;
+  background-color: #f2f3f5 !important;
 }
 
 img, video, svg, iframe {
   max-width: 100% !important;
   height: auto !important;
+}
+
+/* 让白色主面板与浅灰背景有层次感，更协调 */
+.teams-container,
+.cloud-welcome,
+.wb-home-page,
+[class*="_page_"],
+[class*="_layout_"],
+[class*="_container_"] {
+  background-color: #ffffff !important;
+  border-radius: 0 0 16px 16px !important;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05) !important;
 }
 
 @media screen and (max-width: 768px) {
@@ -154,7 +167,7 @@ img, video, svg, iframe {
     white-space: nowrap !important;
   }
 
-  /* 主内容居中排列 */
+  /* 主内容自然从上到下排列，避免大片空白居中导致页面空洞 */
   .cloud-welcome__main,
   .main-content,
   .main-content--welcome,
@@ -163,7 +176,7 @@ img, video, svg, iframe {
   [class*="_emptyStateContainer_"] {
     display: flex !important;
     flex-direction: column !important;
-    align-items: center !important;
+    align-items: stretch !important;
     justify-content: flex-start !important;
   }
 

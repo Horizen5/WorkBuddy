@@ -4,7 +4,7 @@
 
 ### 下载
 
-**[WorkBuddy v1.2.0](https://github.com/Horizen5/WorkBuddy/releases/latest)** · Release APK · Android 5.0+
+**[WorkBuddy v1.3.0](https://github.com/Horizen5/WorkBuddy/releases/latest)** · Release APK · Android 5.0+
 
 [![Release](https://img.shields.io/github/v/release/Horizen5/WorkBuddy?label=%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC)](https://github.com/Horizen5/WorkBuddy/releases/latest)
 [![Downloads](https://img.shields.io/github/downloads/Horizen5/WorkBuddy/total?label=%E4%B8%8B%E8%BD%BD%E9%87%8F)](https://github.com/Horizen5/WorkBuddy/releases)
@@ -20,7 +20,7 @@
 - **DOM/数据库存储**：支持 localStorage 和 IndexedDB
 - **下拉刷新**：原生手势下拉刷新网页内容
 - **返回键后退**：物理返回键触发网页后退而非退出 App
-- **UA 标识**：User-Agent 追加 `WorkBuddyApp/1.2.0`，便于服务端识别
+- **UA 标识**：User-Agent 追加 `WorkBuddyApp/1.3.0`，便于服务端识别
 - **全分辨率图标**：mdpi 到 xxxhdpi 五套启动图标
 - **移动端布局修复**：自动注入 viewport meta + CSS，解决手机端标题不居中、登录按钮被遮挡问题
 
@@ -59,7 +59,7 @@ WorkBuddy/
 │   ├── build.gradle / settings.gradle / gradle.properties
 │   └── README.md
 ├── 安装包/                       # 发布的安装包
-│   └── WorkBuddy-v1.2-release.apk
+│   └── WorkBuddy-v1.3-release.apk
 ├── README-打包说明.md
 ├── WorkBuddy-移动端问题报告.md
 └── 交付说明与下一步.md
@@ -88,6 +88,14 @@ WorkBuddy/
 ---
 
 ## 五、更新日志
+
+### v1.3.0
+
+- **状态栏/导航条暗色磨砂底**：针对浅色页面把状态栏、导航栏改为深色半透明（`0xB3000000`），并强制系统图标为浅色，解决浅色背景下状态栏文字/图标看不清的问题
+- **文件上传支持**：`WebChromeClient.onShowFileChooser` 接入 Android 原生文件选择器（`ACTION_OPEN_DOCUMENT`/`ACTION_GET_CONTENT`），网页里的 `<input type="file">` 会自动调起系统文件管理器
+- **页面更协调**：为 body 设置浅灰底色 `#f2f3f5`，白色主面板带圆角与轻阴影；取消主内容区过度居中的 flex 布局，改为自然拉伸排列，减少空白感
+- **UA 标识升级**：User-Agent 追加 `WorkBuddyApp/1.3.0`
+- versionCode 4 / versionName 1.3.0
 
 ### v1.2.0
 

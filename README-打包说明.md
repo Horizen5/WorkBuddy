@@ -22,7 +22,7 @@ WorkBuddy/
 │   ├── .gitignore
 │   └── README.md
 ├── 安装包/                            # 顶层便于直接取用的 APK
-│   └── WorkBuddy-v1.2-release.apk    # 正式签名包（推荐安装）
+│   └── WorkBuddy-v1.3-release.apk    # 正式签名包（推荐安装）
 ├── README-打包说明.md
 ├── WorkBuddy-移动端问题报告.md
 └── 交付说明与下一步.md
@@ -31,6 +31,6 @@ WorkBuddy/
 ## App 技术参数
 - 包名 `com.workbuddy.app` ｜ 起始页 `https://www.workbuddy.cn/app`
 - minSdk 21 ｜ targetSdk / compileSdk 35
-- 启用：JavaScript、DOM/数据库存储、下拉刷新、返回键后退、UA 追加 `WorkBuddyApp/1.2.0`
+- 启用：JavaScript、DOM/数据库存储、下拉刷新、返回键后退、UA 追加 `WorkBuddyApp/1.3.0`
 - 移动端布局修复：注入 viewport meta + 187 行移动端适配 CSS（≤768px 视口重排为单列）
 - 图标：WorkBuddy 官方 Logo 渲染为 mdpi→xxxhdpi
