@@ -4,7 +4,7 @@
 
 ### 下载
 
-**[WorkBuddy v1.0.0](https://github.com/Horizen5/WorkBuddy/releases/latest)** · Release APK · Android 5.0+
+**[WorkBuddy v1.1.0](https://github.com/Horizen5/WorkBuddy/releases/latest)** · Release APK · Android 5.0+
 
 [![Release](https://img.shields.io/github/v/release/Horizen5/WorkBuddy?label=%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC)](https://github.com/Horizen5/WorkBuddy/releases/latest)
 [![Downloads](https://img.shields.io/github/downloads/Horizen5/WorkBuddy/total?label=%E4%B8%8B%E8%BD%BD%E9%87%8F)](https://github.com/Horizen5/WorkBuddy/releases)
