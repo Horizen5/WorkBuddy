@@ -1,0 +1,13 @@
+# Android / Gradle 构建产物
+.gradle/
+build/
+app/build/
+local.properties
+
+# 签名密钥（含私钥，切勿提交到公开仓库；本地保留即可复现签名包）
+app/workbuddy.keystore
+
+# 系统/IDE 文件
+*.iml
+.idea/
+.DS_Store
