@@ -90,7 +90,7 @@ git push -u origin main
 
 ---
 
-## 附：移动端网页问题报告
+## 附：移动端网页问题报告与修复
 
 在 `https://www.workbuddy.cn/app` 的手机端（视口 320–412px）发现两类布局问题，
 详见随附文档《WorkBuddy-移动端问题报告.md》：
@@ -99,4 +99,9 @@ git push -u origin main
    登录按钮右边缘到达 x≈524px，超出视口约 134px，导致按钮被裁切/遮挡。
 2. **「WorkBuddy，我帮你」标题未居中**：标题块的 `text-align` / 容器宽度未按移动端约束居中。
 
-报告内已给出对应的 CSS 修复建议（媒体查询 + 弹性布局 + 标题居中）。
+根因：页面本身**缺少 `<meta name="viewport">`** 且主布局固定 540px，在手机 WebView 中右侧被切掉。
+
+> ✅ **已修复**（v1.1）：`MainActivity` 在 `onPageFinished` 时注入
+> `width=device-width` 的 viewport meta 标签，并通过 `R.raw.mobile_fix` 注入移动端适配 CSS
+> （`app/src/main/res/raw/mobile_fix.css`），把 540px 桌面布局在 ≤768px 视口下重排为单列、
+> 标题居中、登录按钮保留。验证：390/375/412px 视口下 `scrollWidth == clientWidth`，无横向溢出。

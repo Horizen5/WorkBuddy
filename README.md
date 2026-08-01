@@ -268,6 +268,10 @@ text = if (active) {
 
 详细修复建议见随附文档 `WorkBuddy-移动端问题报告.md`。
 
+> ✅ **已修复（v1.1）**：根因是页面缺少 `<meta name="viewport">` 且主布局固定 540px。
+> `workbuddy-android` 已在 `MainActivity` 注入 viewport meta + `res/raw/mobile_fix.css`
+> （媒体查询重排为单列、标题居中、登录按钮保留），手机视口下已无横向溢出。
+
 ---
 
 ## 七、更新日志
