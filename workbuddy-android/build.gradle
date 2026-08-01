@@ -1,3 +1,11 @@
-plugins {
-    id 'com.android.application' version '8.8.0' apply false
+buildscript {
+    repositories {
+        maven { url 'file:///local-maven' }
+        google()
+        mavenCentral()
+        maven { url 'https://maven.aliyun.com/repository/public/' }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.8.0'
+    }
 }

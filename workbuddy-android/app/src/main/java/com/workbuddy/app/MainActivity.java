@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         settings.setDisplayZoomControls(false);
 
         settings.setUserAgentString(
-            settings.getUserAgentString() + " WorkBuddyApp/1.1.0"
+            settings.getUserAgentString() + " WorkBuddyApp/1.2.0"
         );
 
         // 注入 viewport meta + 移动端适配 CSS

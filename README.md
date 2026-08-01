@@ -4,7 +4,7 @@
 
 ### 下载
 
-**[WorkBuddy v1.1.0](https://github.com/Horizen5/WorkBuddy/releases/latest)** · Release APK · Android 5.0+
+**[WorkBuddy v1.2.0](https://github.com/Horizen5/WorkBuddy/releases/latest)** · Release APK · Android 5.0+
 
 [![Release](https://img.shields.io/github/v/release/Horizen5/WorkBuddy?label=%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC)](https://github.com/Horizen5/WorkBuddy/releases/latest)
 [![Downloads](https://img.shields.io/github/downloads/Horizen5/WorkBuddy/total?label=%E4%B8%8B%E8%BD%BD%E9%87%8F)](https://github.com/Horizen5/WorkBuddy/releases)
@@ -20,7 +20,7 @@
 - **DOM/数据库存储**：支持 localStorage 和 IndexedDB
 - **下拉刷新**：原生手势下拉刷新网页内容
 - **返回键后退**：物理返回键触发网页后退而非退出 App
-- **UA 标识**：User-Agent 追加 `WorkBuddyApp/1.0`，便于服务端识别
+- **UA 标识**：User-Agent 追加 `WorkBuddyApp/1.2.0`，便于服务端识别
 - **全分辨率图标**：mdpi 到 xxxhdpi 五套启动图标
 - **移动端布局修复**：自动注入 viewport meta + CSS，解决手机端标题不居中、登录按钮被遮挡问题
 
@@ -59,7 +59,7 @@ WorkBuddy/
 │   ├── build.gradle / settings.gradle / gradle.properties
 │   └── README.md
 ├── 安装包/                       # 发布的安装包
-│   └── WorkBuddy-v1.1-release.apk
+│   └── WorkBuddy-v1.2-release.apk
 ├── README-打包说明.md
 ├── WorkBuddy-移动端问题报告.md
 └── 交付说明与下一步.md
@@ -89,15 +89,21 @@ WorkBuddy/
 
 ## 五、更新日志
 
+### v1.2.0
+
+- **恢复左上角汉堡菜单（Toggle Sidebar）按钮**：此前误将含该按钮的顶栏 `.teams-top-bar` 整条隐藏，现已保留并适配移动端
+- **全面屏 / 刘海适配**：原生侧透明状态栏 + `LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES`，网页侧用 `env(safe-area-inset-*)` 为顶/底栏留白，避免内容钻到刘海底下
+- **UA 标识升级**：User-Agent 追加 `WorkBuddyApp/1.2.0`（服务端可按版本识别）
+- 手机视口（320–412px）下已无横向溢出
+- versionCode 3 / versionName 1.2.0
+
 ### v1.1.0
 
 - **修复移动端布局**：`MainActivity` 注入 `viewport` meta + `res/raw/mobile_fix.css`，将固定 540px 桌面布局重排为单列、标题居中、登录按钮不再被裁切
-- **恢复左上角汉堡菜单（Toggle Sidebar）按钮**：此前误将含该按钮的顶栏 `.teams-top-bar` 整条隐藏，现已保留并适配移动端
-- **全面屏 / 刘海适配**：原生侧透明状态栏 + `LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES`，网页侧用 `env(safe-area-inset-*)` 为顶/底栏留白，避免内容钻到刘海底下
 - 手机视口（320–412px）下已无横向溢出
 - 添加 Gradle Wrapper（`gradlew`），便于本地构建
 - 验证截图：`verify_before.png` / `verify_after.png`
-- versionCode 3 / versionName 1.1.0
+- versionCode 2 / versionName 1.1.0
 
 ### v1.0.0
 
