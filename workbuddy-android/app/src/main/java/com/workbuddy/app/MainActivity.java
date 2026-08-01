@@ -1,12 +1,15 @@
 package com.workbuddy.app;
 
 import android.os.Bundle;
+import android.os.Build;
 import android.util.Log;
+import android.view.WindowManager;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.WindowCompat;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -27,6 +30,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // 全面屏 / 刘海适配：状态栏与导航栏透明，内容可延伸到切口区域；
+        // 实际留白由网页 CSS 的 env(safe-area-inset-*) 处理，避免内容钻到刘海底下
+        WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(0x00000000);
+            getWindow().setNavigationBarColor(0x00000000);
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            WindowManager.LayoutParams lp = getWindow().getAttributes();
+            lp.layoutInDisplayCutoutMode =
+                WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
+            getWindow().setAttributes(lp);
+        }
+
         webView = findViewById(R.id.webview);
         swipeRefresh = findViewById(R.id.swiperefresh);
 
@@ -43,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         settings.setDisplayZoomControls(false);
 
         settings.setUserAgentString(
-            settings.getUserAgentString() + " WorkBuddyApp/1.0"
+            settings.getUserAgentString() + " WorkBuddyApp/1.1.0"
         );
 
         // 注入 viewport meta + 移动端适配 CSS

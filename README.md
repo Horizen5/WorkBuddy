@@ -92,6 +92,8 @@ WorkBuddy/
 ### v1.1.0
 
 - **修复移动端布局**：`MainActivity` 注入 `viewport` meta + `res/raw/mobile_fix.css`，将固定 540px 桌面布局重排为单列、标题居中、登录按钮不再被裁切
+- **恢复左上角汉堡菜单（Toggle Sidebar）按钮**：此前误将含该按钮的顶栏 `.teams-top-bar` 整条隐藏，现已保留并适配移动端
+- **全面屏 / 刘海适配**：原生侧透明状态栏 + `LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES`，网页侧用 `env(safe-area-inset-*)` 为顶/底栏留白，避免内容钻到刘海底下
 - 手机视口（320–412px）下已无横向溢出
 - 添加 Gradle Wrapper（`gradlew`），便于本地构建
 - 验证截图：`verify_before.png` / `verify_after.png`
