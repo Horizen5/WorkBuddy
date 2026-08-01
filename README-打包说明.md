@@ -16,15 +16,15 @@ WorkBuddy-完整交付包/
 │   │   ├── build.gradle
 │   │   └── workbuddy.keystore        # 签名密钥（本地保留，已 gitignore）
 │   ├── apk/                          # 已编译安装包
-│   │   ├── WorkBuddy-v1.0-release.apk   # 正式签名包（推荐安装）
-│   │   └── WorkBuddy-v1.0-debug.apk     # 调试包
+│   │   ├── WorkBuddy-v1.1-release.apk   # 正式签名包（推荐安装）
+│   │   └── WorkBuddy-v1.1-debug.apk     # 调试包
 │   ├── push_to_github.sh             # 一键推送到你的 GitHub 仓库（本地运行）
 │   ├── build.gradle / settings.gradle / gradle.properties
 │   ├── .gitignore
 │   └── README.md
 ├── 安装包/                            # 顶层便于直接取用的 APK
-│   ├── WorkBuddy-v1.0-release.apk
-│   └── WorkBuddy-v1.0-debug.apk
+│   ├── WorkBuddy-v1.1-release.apk
+│   └── WorkBuddy-v1.1-debug.apk
 ├── WorkBuddy-移动端问题报告.md        # 手机端 bug（登录遮挡 / 标题未居中）+ CSS 修复建议
 └── 交付说明与下一步.md                # 连通性说明 + GitHub 推送步骤 + 安全告警
 ```
@@ -32,7 +32,7 @@ WorkBuddy-完整交付包/
 ## 你要做什么
 
 ### 1. 安装测试（最快）
-直接用 `安装包/WorkBuddy-v1.0-release.apk` 在安卓手机上安装即可（WebView 封装，打开即加载 `https://www.workbuddy.cn/app`）。
+直接用 `安装包/WorkBuddy-v1.1-release.apk` 在安卓手机上安装即可（WebView 封装，打开即加载 `https://www.workbuddy.cn/app`）。
 
 ### 2. 推送到 GitHub（本沙盒无法直连，需你本地执行）
 > 当前编译环境（沙盒）网络出口封锁 GitHub，且可用代理均不转发鉴权，无法自动推送。
@@ -47,7 +47,7 @@ bash push_to_github.sh
 
 或手动：
 ```bash
-git init && git add . && git commit -m "Add WorkBuddy Android app v1.0"
+git init && git add . && git commit -m "Add WorkBuddy Android app v1.1"
 git branch -M main
 git remote add origin https://github.com/Horizen5/WorkBuddy.git
 git push -u origin main
@@ -65,5 +65,5 @@ git push -u origin main
 ## App 技术参数
 - 包名 `com.workbuddy.app` ｜ 起始页 `https://www.workbuddy.cn/app`
 - minSdk 21 ｜ targetSdk / compileSdk 35
-- 启用：JavaScript、DOM/数据库存储、下拉刷新、返回键后退、UA 追加 `WorkBuddyApp/1.0`
+- 启用：JavaScript、DOM/数据库存储、下拉刷新、返回键后退、UA 追加 `WorkBuddyApp/1.1`
 - 图标：WorkBuddy 官方 Logo 渲染为 mdpi→xxxhdpi

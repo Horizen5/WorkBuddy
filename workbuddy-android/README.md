@@ -16,8 +16,8 @@ workbuddy-android/
 │   ├── workbuddy.keystore    # 签名密钥（已 gitignore，本地保留）
 │   └── src/main/             # Manifest / Java / 布局 / 各分辨率图标
 ├── apk/                      # 已编译安装包（可直接安装）
-│   ├── WorkBuddy-v1.0-release.apk   # 正式签名包（推荐）
-│   └── WorkBuddy-v1.0-debug.apk     # 调试包
+│   ├── WorkBuddy-v1.1-release.apk   # 正式签名包（推荐）
+│   └── WorkBuddy-v1.1-debug.apk     # 调试包
 ├── push_to_github.sh         # 一键推送到你的 GitHub 仓库
 ├── build.gradle / settings.gradle / gradle.properties
 └── README.md
@@ -79,7 +79,7 @@ workbuddy-android/
 ```bash
 git init
 git add .
-git commit -m "Add WorkBuddy Android WebView app (v1.0)"
+git commit -m "Add WorkBuddy Android WebView app (v1.1)"
 git branch -M main
 git remote add origin https://github.com/你的用户名/你的仓库名.git
 git push -u origin main

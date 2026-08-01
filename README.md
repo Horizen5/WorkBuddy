@@ -20,7 +20,7 @@
 - **DOM/数据库存储**：支持 localStorage 和 IndexedDB
 - **下拉刷新**：原生手势下拉刷新网页内容
 - **返回键后退**：物理返回键触发网页后退而非退出 App
-- **UA 标识**：User-Agent 追加 `WorkBuddyApp/1.0`，便于服务端识别
+- **UA 标识**：User-Agent 追加 `WorkBuddyApp/1.1`，便于服务端识别
 - **全分辨率图标**：mdpi 到 xxxhdpi 五套启动图标
 
 ---
@@ -53,14 +53,11 @@ WorkBuddy/
 │   │           ├── layout/activity_main.xml
 │   │           ├── mipmap-*/ic_launcher.png
 │   │           └── values/strings.xml
-│   ├── apk/                     # 已编译安装包
-│   │   ├── WorkBuddy-v1.0-release.apk
-│   │   └── WorkBuddy-v1.0-debug.apk
+│   ├── apk/                     # 已编译安装包（产物见 安装包/）
 │   ├── build.gradle / settings.gradle / gradle.properties
 │   └── README.md
-├── 安装包/                       # 独立安装包（与 apk/ 内容相同）
-│   ├── WorkBuddy-v1.0-release.apk
-│   └── WorkBuddy-v1.0-debug.apk
+├── 安装包/                       # 发布的安装包
+│   └── WorkBuddy-v1.1-release.apk
 ├── README-打包说明.md
 ├── WorkBuddy-移动端问题报告.md
 └── 交付说明与下一步.md
@@ -276,6 +273,12 @@ text = if (active) {
 
 ## 七、更新日志
 
+### v1.1.0
+
+- **修复移动端布局**：`MainActivity` 注入 `viewport` meta + `res/raw/mobile_fix.css`，将固定 540px 桌面布局重排为单列、标题居中、登录按钮不再被裁切
+- 手机视口（320–412px）下已无横向溢出
+- versionCode 2 / versionName 1.1.0
+
 ### v1.0.0
 
 - 首个版本
@@ -290,4 +293,4 @@ text = if (active) {
 
 - 本应用仅为 WorkBuddy 网页的 WebView 封装，不修改任何服务端逻辑
 - 签名密钥为临时生成，正式发布前请替换为自有密钥
-- 移动端布局问题需服务端配合修复，本应用无法在客户端侧解决
+- 移动端布局问题已在客户端通过注入 viewport + `mobile_fix.css` 修复，无需服务端改动

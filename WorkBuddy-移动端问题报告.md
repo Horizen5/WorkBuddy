@@ -106,8 +106,8 @@
 
 | 文件 | 说明 | 大小 |
 |------|------|------|
-| `/workspace/WorkBuddy-v1.0-release.apk` | **推荐安装** 签名 Release 包 | 4.6 MB |
-| `/workspace/WorkBuddy-v1.0-debug.apk` | 调试用 Debug 包 | 5.6 MB |
+| `安装包/WorkBuddy-v1.1-release.apk` | **推荐安装** 签名 Release 包 | 4.6 MB |
+| `安装包/WorkBuddy-v1.1-release.apk` | 调试用 Debug 包 | 5.6 MB |
 | `/workspace/workbuddy-android/` | 完整 Android Studio / Gradle 源码 | - |
 
 ### 2.2 应用信息
@@ -152,7 +152,7 @@ curl: (35) OpenSSL SSL_error_SYSCALL in connection to api.github.com:443
 # 2. 把 /workspace/workbuddy-android/ 的内容复制进去
 # 3. 提交并推送
 git add workbuddy-android/ *.apk
-git commit -m "Add WorkBuddy Android wrapper v1.0"
+git commit -m "Add WorkBuddy Android wrapper v1.1"
 git push origin main
 ```
 
