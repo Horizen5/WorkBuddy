@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">WorkBuddy</string>
+    <string name="refresh_content_description">刷新</string>
 </resources>

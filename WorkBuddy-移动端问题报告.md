@@ -106,15 +106,14 @@
 
 | 文件 | 说明 | 大小 |
 |------|------|------|
-| `安装包/WorkBuddy-v1.3-release.apk` | **推荐安装** 签名 Release 包 | 4.6 MB |
-| `安装包/WorkBuddy-v1.3-release.apk` | 调试用 Debug 包 | 5.6 MB |
+| `安装包/WorkBuddy-v1.4-release.apk` | **推荐安装** 签名 Release 包 | 4.7 MB |
 | `/workspace/workbuddy-android/` | 完整 Android Studio / Gradle 源码 | - |
 
 ### 2.2 应用信息
 
 - **包名：** `com.workbuddy.app`
 - **应用名称：** WorkBuddy
-- **版本：** 1.3.0（versionCode 4）
+- **版本：** 1.4.0（versionCode 5）
 - **图标：** 使用网站 `logo.svg` 生成的多分辨率 PNG
 - **功能：** 基于 WebView 加载 `https://www.workbuddy.cn/app`
   - 启用 JavaScript、DOM Storage、数据库缓存
@@ -152,8 +151,8 @@ curl: (35) OpenSSL SSL_error_SYSCALL in connection to api.github.com:443
 # 2. 把 /workspace/workbuddy-android/ 的内容复制进去
 # 3. 提交并推送
 git add workbuddy-android/ *.apk
-git commit -m "Add WorkBuddy Android wrapper v1.3.0"
-git push origin main
+git commit -m "Add WorkBuddy Android wrapper v1.4.0"
+git push origin master
 ```
 
 **重要：** 你此前把 GitHub Token 以明文形式发给了我，该 Token 已不再安全。请在 GitHub 上立即：

@@ -86,14 +86,17 @@ img, video, svg, iframe {
     box-sizing: border-box !important;
   }
 
-  /* 顶部 header：保持一行， logo 固定大小，登录按钮保留 */
+  /* 顶部 header：保持一行， logo 固定大小，登录按钮保留
+   * 浅色实底（白），与深色状态栏形成“相反色”对比，不再把顶栏染成黑灰 */
   .cloud-welcome__header {
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
-    padding: calc(env(safe-area-inset-top) + 10px) 16px 10px 16px !important;
+    padding: 14px 16px 10px 16px !important;
     height: auto !important;
     min-height: 56px !important;
+    background-color: #ffffff !important;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06) !important;
   }
 
   .cloud-welcome__header-content {
@@ -138,7 +141,8 @@ img, video, svg, iframe {
     height: auto !important;
   }
 
-  /* 顶栏（含左上角汉堡菜单 Toggle Sidebar）在手机上必须保留并显示，并避开刘海/状态栏 */
+  /* 顶栏（含左上角汉堡菜单 Toggle Sidebar）在手机上必须保留并显示，并避开刘海/状态栏
+   * 同样使用浅色实底，与深色状态栏形成对比，并下移留出顶部间距 */
   .teams-top-bar {
     display: flex !important;
     flex-wrap: nowrap !important;
@@ -146,12 +150,14 @@ img, video, svg, iframe {
     width: 100% !important;
     max-width: 100vw !important;
     height: auto !important;
-    min-height: 44px !important;
-    padding-top: env(safe-area-inset-top) !important;
-    padding-bottom: 4px !important;
+    min-height: 48px !important;
+    padding-top: 12px !important;
+    padding-bottom: 6px !important;
     padding-left: calc(env(safe-area-inset-left) + 8px) !important;
     padding-right: calc(env(safe-area-inset-right) + 8px) !important;
     box-sizing: border-box !important;
+    background-color: #ffffff !important;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06) !important;
   }
   /* 汉堡按钮(左)与头像(右)固定不压缩，中间标题省略号截断，避免溢出 */
   .teams-top-bar > *,
@@ -165,6 +171,14 @@ img, video, svg, iframe {
     overflow: hidden !important;
     text-overflow: ellipsis !important;
     white-space: nowrap !important;
+  }
+
+  /* 已登录态下的其它顶栏也统一浅色实底，与深色状态栏相反 */
+  .wb-home-header,
+  .conversation-list-topbar,
+  .sidebar-next-main-header {
+    background-color: #ffffff !important;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06) !important;
   }
 
   /* 主内容自然从上到下排列，避免大片空白居中导致页面空洞 */

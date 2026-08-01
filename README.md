@@ -4,7 +4,7 @@
 
 ### 下载
 
-**[WorkBuddy v1.3.0](https://github.com/Horizen5/WorkBuddy/releases/latest)** · Release APK · Android 5.0+
+**[WorkBuddy v1.4.0](https://github.com/Horizen5/WorkBuddy/releases/latest)** · Release APK · Android 5.0+
 
 [![Release](https://img.shields.io/github/v/release/Horizen5/WorkBuddy?label=%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC)](https://github.com/Horizen5/WorkBuddy/releases/latest)
 [![Downloads](https://img.shields.io/github/downloads/Horizen5/WorkBuddy/total?label=%E4%B8%8B%E8%BD%BD%E9%87%8F)](https://github.com/Horizen5/WorkBuddy/releases)
@@ -20,7 +20,11 @@
 - **DOM/数据库存储**：支持 localStorage 和 IndexedDB
 - **下拉刷新**：原生手势下拉刷新网页内容
 - **返回键后退**：物理返回键触发网页后退而非退出 App
-- **UA 标识**：User-Agent 追加 `WorkBuddyApp/1.3.0`，便于服务端识别
+- **UA 标识**：User-Agent 追加 `WorkBuddyApp/1.4.0`，便于服务端识别
+- **状态栏相反色**：状态栏为深色实色 + 浅色系统图标，与浅色页面顶栏形成对比（不再把软件顶栏染成黑灰）
+- **右上角刷新按钮**：登录后显示在右上角，未登录时隐藏，便于随时刷新页面
+- **文件上传优化**：调起系统文件管理器更稳定，规避卡死/黑屏
+- **下拉刷新防误触**：仅当页面滚动到顶部时可下拉刷新；页面已下滑时，下拉用于浏览内容而非刷新
 - **全分辨率图标**：mdpi 到 xxxhdpi 五套启动图标
 - **移动端布局修复**：自动注入 viewport meta + CSS，解决手机端标题不居中、登录按钮被遮挡问题
 
@@ -59,7 +63,7 @@ WorkBuddy/
 │   ├── build.gradle / settings.gradle / gradle.properties
 │   └── README.md
 ├── 安装包/                       # 发布的安装包
-│   └── WorkBuddy-v1.3-release.apk
+│   └── WorkBuddy-v1.4-release.apk
 ├── README-打包说明.md
 ├── WorkBuddy-移动端问题报告.md
 └── 交付说明与下一步.md
@@ -88,6 +92,16 @@ WorkBuddy/
 ---
 
 ## 五、更新日志
+
+### v1.4.0
+
+- **状态栏与页面顶栏相反色**：状态栏改为深色实色（`0xFF0F1419`）+ 浅色系统图标，页面顶栏为浅色实底，二者形成清晰对比；不再把软件顶部染成黑灰色
+- **内容不再贴顶**：内容不再延伸到状态栏下方（`WindowCompat.setDecorFitsSystemWindows(true)`），顶栏增加固定上间距，避免内容顶到屏幕最上沿
+- **右上角刷新按钮（登录后显示）**：新增顶部右侧刷新按钮，通过 JS 桥接检测登录态——未登录 / 加载中隐藏，登录后显示
+- **修复文件选择器卡死 / 黑屏**：调起系统文件管理器前禁用下拉刷新手势，补充 `CATEGORY_OPENABLE`，失败时回退 `ACTION_GET_CONTENT`，结果回调稳妥收尾
+- **修复下拉被误判为刷新**：给 WebView 增加滚动监听，仅在页面滚动到顶部时启用下拉刷新，已下滑时下拉用于浏览内容
+- **UA 标识升级**：User-Agent 追加 `WorkBuddyApp/1.4.0`
+- versionCode 5 / versionName 1.4.0
 
 ### v1.3.0
 
